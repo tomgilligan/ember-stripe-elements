@@ -22,8 +22,8 @@ export default function loadScript(url) {
           resolve();
         });
       }, false);
-      element.addEventListener('error', () => {
-        let error = new Error(`Could not load script ${url}`);
+      element.addEventListener('error', (event) => {
+        let error = new Error(`Could not load script ${event.type} ${event.message} ${url}`);
         run(() => {
           reject(error);
         });
